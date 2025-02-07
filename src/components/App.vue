@@ -8,12 +8,13 @@
   <div>
   <!-- add your template here... -->
   <nav>
-  <router-link to="/">Inicio</router-link>
-  <router-link to="/crear">Crear</router-link>
-  <router-link to="/editar">Editar</router-link>
-   <router-link to="/listar">Listar</router-link>
-  </nav>
-  <router-view></router-view>
+        <router-link to="/inicio">Inicio</router-link>
+        <router-link to="/crear">Crear</router-link>
+        <router-link to="/editar">Editar</router-link>
+        <router-link to="/listar">Listar</router-link>
+        </nav>
+        <router-view></router-view>
+  
   </div>
 
   

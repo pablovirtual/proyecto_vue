@@ -3,13 +3,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Crear from '../components/Crear.vue'
 import Editar from '../components/Editar.vue'
 import Listar from '../components/Listar.vue'
-import App from '../components/App.vue'
+import Inicio from '../components/Inicio.vue'
 
 const routes = [
   {
-    path: '/app',
+    path: '/',
+    redirect:'/inicio'
+  },
+  {
+    path: '/inicio',
     name: 'Inicio',
-    component: App
+    component: Inicio
   },
   {
     path: '/crear',
