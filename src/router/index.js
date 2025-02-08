@@ -2,7 +2,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Editar from "../components/Editar.vue";
 import Inicio from "../components/Inicio.vue";
-import Actualizar from "../components/Actualizar.vue";
 import Eliminar from "../components/Eliminar.vue";
 import Agregar from "../components/Agregar.vue";
 import Leer from "../components/Leer.vue";
@@ -21,11 +20,6 @@ const routes = [
     path: "/editar",
     name: "Editar",
     component: Editar,
-  },
-  {
-    path: "/actualizar",
-    name: "Actualizar",
-    component: Actualizar,
   },
   {
     path: "/agregar",

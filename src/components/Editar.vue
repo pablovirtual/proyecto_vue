@@ -1,3 +1,45 @@
+<!--
+🔄 Componente de Edición de Empleado
+
+📝 Descripción:
+Este componente permite editar la información de un empleado existente en el sistema.
+Muestra un formulario con campos para modificar el nombre y correo del empleado.
+
+🔧 Propiedades Reactivas:
+- empleado: Objeto que contiene id, nombre y correo del empleado a editar
+
+🎯 Funcionalidades:
+- Carga automática de datos del empleado al montar el componente
+- Validación de campos requeridos
+- Actualización de información en la base de datos
+- Redirección automática después de la actualización
+
+📡 APIs Utilizadas:
+- getEmpleado: Obtiene los datos del empleado por ID
+- updateEmpleado: Actualiza los datos del empleado en la BD
+
+🚦 Flujo de Trabajo:
+1. Obtiene el ID del empleado desde la URL
+2. Carga los datos del empleado al iniciar
+3. Permite edición de campos
+4. Envía actualización al servidor
+5. Redirecciona a la página de inicio
+
+⚠️ Manejo de Errores:
+- Validación de ID existente
+- Manejo de errores en la carga de datos
+- Manejo de errores en la actualización
+- Alertas de éxito/error
+
+🔗 Rutas:
+- Redirección a "/inicio" después de actualizar
+- Botón de retorno a inicio
+
+🎨 Estilos:
+- Utiliza clases de Bootstrap para el diseño
+- Formulario responsivo
+- Botones estilizados
+-->
 <script setup>
   import { ref, onMounted  } from "vue";
   import { useRoute,useRouter } from "vue-router";

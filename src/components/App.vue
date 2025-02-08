@@ -1,3 +1,28 @@
+/**
+ * @component App
+ * @description Componente principal que maneja la navegación de la aplicación.
+ *             Proporciona una barra de navegación con enlaces a diferentes rutas
+ *             utilizando router-link de Vue Router.
+ * 
+ * @vue-template
+ * - nav: Barra de navegación con enlaces estilizados usando Bootstrap
+ * - router-view: Contenedor donde se renderizan los componentes según la ruta actual
+ * 
+ * @vue-style
+ * - Implementa diseño responsivo con Flexbox
+ * - Usa clases de Bootstrap para los botones
+ * - Incluye animaciones y efectos de hover en los botones
+ * - Aplica sombras y transformaciones para efectos visuales
+ * 
+ * @routing
+ * - /inicio: Ruta para la página principal
+ * - /agregar: Ruta para la página de agregar elementos
+ * 
+ * @styling
+ * - Utiliza Bootstrap para estilos base de botones
+ * - Personaliza la apariencia con transiciones y efectos de sombra
+ * - Implementa efectos interactivos en hover y active states
+ */
 <template>
   <div>
     <nav>

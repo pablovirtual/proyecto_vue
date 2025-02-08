@@ -1,3 +1,31 @@
+<!--
+* @file Inicio.vue
+* @description Componente Vue que muestra una lista de empleados en formato de tabla con opciones para ver, editar y eliminar cada registro
+*
+* @component Inicio
+* @requires vue
+* @requires ../services/api.js
+* @requires vue-router
+*
+* @data {Array} empleados - Array reactivo que almacena la lista de empleados obtenida de la API
+*
+* @method eliminarEmpleados(id) - Maneja la acción de eliminar un empleado, redirigiendo a la ruta /eliminar con el ID como parámetro
+* 
+* @hook onMounted - Hook del ciclo de vida que se ejecuta al montar el componente. Realiza la petición GET para obtener los empleados
+*
+* @template
+* - Renderiza una tabla con Bootstrap que muestra:
+*   - ID del empleado
+*   - Nombre del empleado 
+*   - Correo del empleado
+*   - Botones de acción (Ver, Editar, Eliminar)
+* - Incluye manejo de errores para la petición API
+* 
+* @css
+* - Utiliza clases de Bootstrap para estilos
+* - container, mt-4, mb-4, table, table-striped
+* - btn, btn-info, btn-warning, btn-danger, me-2
+-->
 <script setup>
 // add your script setup here...
 import { ref, onMounted } from "vue";

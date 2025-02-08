@@ -1,3 +1,41 @@
+<!--
+🗑️ Componente de Eliminación de Empleados
+
+📝 Descripción:
+Este componente permite eliminar un empleado del sistema, mostrando una vista de confirmación
+con los detalles del empleado antes de proceder con la eliminación.
+
+🔧 Propiedades:
+- No recibe propiedades directamente
+
+📦 Importaciones:
+- ref, onMounted: De Vue.js para manejo de estado y ciclo de vida
+- useRoute, useRouter: De Vue Router para navegación
+- getEmpleado, deleteEmpleado: Servicios API para operaciones CRUD
+
+🔄 Estado:
+- empleado: Almacena los datos del empleado a eliminar
+
+📋 Funcionalidades:
+- Carga inicial: Obtiene los datos del empleado según el ID en la URL
+- confirmarEliminacion: Maneja el proceso de eliminación con confirmación
+
+⚡ Eventos:
+- click: En el botón de confirmación para ejecutar la eliminación
+
+🎯 Flujo de uso:
+1. Component carga y obtiene datos del empleado
+2. Muestra información del empleado
+3. Usuario confirma eliminación
+4. Sistema elimina y redirecciona a inicio
+
+⚠️ Manejo de errores:
+- Muestra alertas en caso de error en la eliminación
+- Maneja errores en la carga inicial de datos
+
+🔗 Rutas:
+- Redirección a "/Inicio" después de eliminación exitosa
+-->
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";

@@ -1,5 +1,16 @@
+
 import axios from "axios";
 
+/**
+ * 🌐 Cliente Axios configurado para realizar peticiones HTTP
+ * @const {import('axios').AxiosInstance} apiClient
+ * @description Cliente Axios personalizado para comunicarse con el backend de empleados
+ * @property {string} baseURL - URL base del servidor API (http://localhost/db_empleados/)
+ * @property {Object} headers - Cabeceras predeterminadas para las peticiones
+ * @property {string} headers.Content-Type - Tipo de contenido establecido como application/json
+ * 🔧 Configurado para realizar peticiones al servidor local
+ * 📝 Todas las peticiones se enviarán automáticamente en formato JSON
+ */
 const apiClient = axios.create({
   // Usa solo la carpeta donde se encuentra index.php
   baseURL: "http://localhost/db_empleados/",

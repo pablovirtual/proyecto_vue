@@ -1,3 +1,31 @@
+/**
+ * @fileoverview Componente para visualizar los detalles de un empleado específico 👀
+ * 
+ * @component Leer
+ * @description Este componente permite ver la información detallada de un empleado
+ * seleccionado, incluyendo su ID, nombre y correo electrónico 📝
+ *
+ * @dependencies {vue} ref, onMounted - Composables de Vue para manejo de estado y ciclo de vida
+ * @dependencies {vue-router} useRoute, useRouter - Hooks para manejo de rutas
+ * @dependencies {api.js} getEmpleado - Servicio para obtener datos del empleado
+ *
+ * @state {Object|null} empleado - Almacena los datos del empleado consultado
+ *
+ * @mounted
+ * - Obtiene el ID del empleado desde los parámetros de la URL 🔍
+ * - Realiza una petición a la API para obtener los datos del empleado
+ * - Actualiza el estado con la información recibida
+ * 
+ * @ui
+ * - Muestra una tarjeta con la información del empleado 💳
+ * - Incluye campos para ID, nombre y correo
+ * - Proporciona un botón para volver a la página de inicio
+ * 
+ * @error
+ * - Maneja casos donde el empleado no es encontrado
+ * - Registra errores en consola durante la obtención de datos ⚠️
+ */
+
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";

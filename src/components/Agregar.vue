@@ -1,3 +1,24 @@
+/**
+ * @component Agregar
+ * @description Componente para agregar nuevos empleados al sistema
+ * 
+ * @data {Object} empleado - Objeto reactivo que contiene los datos del empleado
+ * @property {string} empleado.nombre - Nombre del empleado
+ * @property {string} empleado.correo - Correo electrónico del empleado
+ * 
+ * @method submitForm - Maneja el envío del formulario para agregar un empleado
+ * @param {Event} e - Evento del formulario
+ * 
+ * @dependencies
+ * - Vue Router para la navegación
+ * - api.js para las llamadas al servidor
+ * - Bootstrap para los estilos
+ * 
+ * @emits None
+ * 
+ * @example
+ * <Agregar />
+ */
 <script setup>
     import { ref } from "vue";
     import { useRouter } from "vue-router";
