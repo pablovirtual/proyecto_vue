@@ -5,7 +5,7 @@ import Inicio from "../components/Inicio.vue";
 import Actualizar from "../components/Actualizar.vue";
 import Eliminar from "../components/Eliminar.vue";
 import Agregar from "../components/Agregar.vue";
-import Listar from "../components/Listar.vue";
+import Leer from "../components/Leer.vue";
 
 const routes = [
   {
@@ -38,9 +38,9 @@ const routes = [
     component: Eliminar,
   },
   {
-    path: "/listar",
-    name: "Listar",
-    component: Listar,
+    path: "/leer",
+    name: "Leer",
+    component: Leer,
   },
 ];
 

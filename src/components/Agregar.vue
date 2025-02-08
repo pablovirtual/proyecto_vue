@@ -1,6 +1,9 @@
 <script setup>
     import { ref } from "vue";
+    import { useRouter } from "vue-router";
     import {addEmpleado } from "../services/api.js";
+
+    const router = useRouter();
 
     // creamos las variables reactivas
     const empleado = ref({
@@ -16,6 +19,8 @@
         try {
             const response = await addEmpleado(empleado.value);
             console.log('Empleado agregado:',response.data);
+            //redirigui al usuario a la vista de inicio
+            router.push("/inicio");
             // limpiamos el formulario
             empleado.value.nombre="";
             empleado.value.correo="";       

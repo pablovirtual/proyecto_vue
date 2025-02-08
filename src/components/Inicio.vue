@@ -1,10 +1,15 @@
 <script setup>
 // add your script setup here...
-//
 import { ref, onMounted } from "vue";
 import { getEmpleados } from "../services/api.js";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const empleados = ref([]);
+
+const eliminarEmpleados = (id) => {
+  router.push(`/eliminar?id=${id}`);
+};
 
 onMounted(async () => {
   try {
@@ -25,6 +30,7 @@ onMounted(async () => {
           <th>ID</th>
           <th>Nombre</th>
           <th>Correo</th>
+          <th>Editar/Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +38,26 @@ onMounted(async () => {
           <td>{{ empleado.id }}</td>
           <td>{{ empleado.nombre }}</td>
           <td>{{ empleado.correo }}</td>
+          <td>
+            <router-link
+              :to="{ path: '/leer', query: { id: empleado.id } }"
+              class="btn btn-info me-2"
+            >
+              Ver
+            </router-link>
+            <router-link
+              :to="{ path: '/editar', query: { id: empleado.id } }"
+              class="btn btn-warning me-2"
+            >
+              Editar
+            </router-link>
+            <button
+              @click="eliminarEmpleados(empleado.id)"
+              class="btn btn-danger"
+            >
+              Eliminar
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
