@@ -4,6 +4,10 @@ import Crear from '../components/Crear.vue'
 import Editar from '../components/Editar.vue'
 import Listar from '../components/Listar.vue'
 import Inicio from '../components/Inicio.vue'
+import actualizar from '../components/Actualizar.vue'
+import Eliminar from '../components/Eliminar.vue'
+import Agregar from '../components/Agregar.vue'
+
 
 const routes = [
   {
@@ -29,7 +33,23 @@ const routes = [
     path: '/listar',
     name: 'Listar',
     component: Listar
+  },
+  {
+    path:'/actualizar',
+    name:'Actualizar',
+    component:actualizar
+  },
+  {
+    path: '/agregar',
+    name: 'Agregar',
+    component: Crear
+  },
+  {
+    path:'/eliminar',
+    name:'Eliminar',
+    component:Eliminar
   }
+  
 ]
 
 const router = createRouter({
