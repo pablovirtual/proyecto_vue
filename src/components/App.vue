@@ -1,24 +1,18 @@
 <script setup>
 // add your script setup here...
-
-
 </script>
 
 <template>
   <div>
-  <!-- add your template here... -->
-  <nav>
-        <router-link to="/inicio">Inicio</router-link>
-        <router-link to="/agregar">Agregar</router-link>
-        <router-link to="/editar">Editar</router-link>
-        <router-link to="/listar">Listar</router-link>
-        </nav>
-        <router-view></router-view>
-  
+    <!-- add your template here... -->
+    <nav>
+      <router-link to="/inicio">Inicio</router-link>
+      <router-link to="/agregar">Agregar</router-link>
+      <router-link to="/editar">Editar</router-link>
+      <router-link to="/listar">Listar</router-link>
+    </nav>
+    <router-view></router-view>
   </div>
-
-  
- 
 </template>
 
 <style scoped>

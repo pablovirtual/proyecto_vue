@@ -1,15 +1,52 @@
+<script setup>
+    import { ref } from "vue";
+    import {addEmpleado } from "../services/api.js";
+
+    // creamos las variables reactivas
+    const empleado = ref({
+        nombre: "",
+        correo: ""
+    });
+
+    // creamos la funcion para agregar un empleado
+    const submitForm = async (e) => {
+        // evitamos que el formulario recargue la pagina
+        e.preventDefault();
+
+        try {
+            const response = await addEmpleado(empleado.value);
+            console.log('Empleado agregado:',response.data);
+            // limpiamos el formulario
+            empleado.value.nombre="";
+            empleado.value.correo="";       
+        } catch (error) {
+            console.error("Error al agregar el empleado", error);
+        }
+    }
+</script>
+
 <template>
-    <div>
-        <h1>Actualizar</h1>
-        <form>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" />
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" />
-        <label for="edad">Edad:</label>
-        <input type="number" id="edad" name="edad" />
-        <button>Actualizar</button>
+    <div class="container mt-4">
+        <h1 class="mb-4">Agregar Empleado</h1>
+        <form @submit="submitForm" novalidate>
+            <!--campo para el nombre-->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" v-model="empleado.nombre" class="form-control" required/>
+            </div>
+            <!--campo para el correo-->
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo</label>
+                <input type="email"
+                id="correo"
+                v-model="empleado.correo"
+                class="form-control"
+                required/>
+            </div>
+            <!--boton para enviar el formulario-->
+            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="reset" class="btn btn-danger">Limpiar</button>
         </form>
+
     </div>
-    <router-link to="/inicio">Volver</router-link>
 </template>
