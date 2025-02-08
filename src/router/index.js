@@ -1,12 +1,12 @@
 // Language: JavaScript
 import { createRouter, createWebHistory } from 'vue-router'
-import Crear from '../components/Crear.vue'
 import Editar from '../components/Editar.vue'
-import Listar from '../components/Listar.vue'
 import Inicio from '../components/Inicio.vue'
-import actualizar from '../components/Actualizar.vue'
+import Actualizar from '../components/Actualizar.vue'
 import Eliminar from '../components/Eliminar.vue'
 import Agregar from '../components/Agregar.vue'
+import Listar from '../components/Listar.vue'
+
 
 
 const routes = [
@@ -20,34 +20,29 @@ const routes = [
     component: Inicio
   },
   {
-    path: '/crear',
-    name: 'Crear',
-    component: Crear
-  },
-  {
     path: '/editar',
     name: 'Editar',
     component: Editar
   },
   {
-    path: '/listar',
-    name: 'Listar',
-    component: Listar
-  },
-  {
     path:'/actualizar',
     name:'Actualizar',
-    component:actualizar
+    component:Actualizar
   },
   {
     path: '/agregar',
     name: 'Agregar',
-    component: Crear
+    component: Agregar
   },
   {
     path:'/eliminar',
     name:'Eliminar',
     component:Eliminar
+  },
+  {
+    path:'/listar',
+    name:'Listar',
+    component:Listar
   }
   
 ]

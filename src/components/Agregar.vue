@@ -11,4 +11,5 @@
         <button>Actualizar</button>
         </form>
     </div>
+    <router-link to="/inicio">Volver</router-link>
 </template>

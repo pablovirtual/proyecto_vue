@@ -9,7 +9,7 @@
   <!-- add your template here... -->
   <nav>
         <router-link to="/inicio">Inicio</router-link>
-        <router-link to="/crear">Crear</router-link>
+        <router-link to="/agregar">Agregar</router-link>
         <router-link to="/editar">Editar</router-link>
         <router-link to="/listar">Listar</router-link>
         </nav>
