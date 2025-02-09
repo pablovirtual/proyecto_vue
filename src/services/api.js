@@ -1,5 +1,4 @@
-
-import axios from "axios";
+import axios from 'axios';
 
 /**
  * 🌐 Cliente Axios configurado para realizar peticiones HTTP
@@ -33,11 +32,11 @@ export function getEmpleado(id) {
 }
 // Funcion para eliminar un empleado por su id
 export function deleteEmpleado(id) {
-  return apiClient.post(`index.php?borrar=${id}`);
+  return apiClient.delete(`index.php?borrar=${id}`);
 }
 //Funcion para actualizar la informacion de un empleado
-export function updateEmpleado(data) {
-  return apiClient.post("index.php?actualizar=true", data);
+export function updateEmpleado(id, data) {
+  return apiClient.put(`index.php?actualizar=${id}`, data);
 }
 // Llamada para visualizar en la consola los datos recibidos desde el endpoint
 getEmpleados()
