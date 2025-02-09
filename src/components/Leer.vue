@@ -32,21 +32,28 @@ import { useRoute, useRouter } from "vue-router";
 import { getEmpleado } from "../services/api.js";
 
 const route = useRoute();
+const router = useRouter();
 const empleado = ref(null);
 
 onMounted(async () => {
   const id = route.query.id;
-  if (id) {
-    try {
-      const { data } = await getEmpleado(id);
-      if (data && data.length > 0) {
-        empleado.value = data[0];
-      } else {
-        console.error("Empleado no encontrado");
-      }
-    } catch (error) {
-      console.error("Error al obtener empleado:", error);
+  if (!id) {
+    console.error("ID no proporcionado");
+    router.push("/inicio");
+    return;
+  }
+
+  try {
+    const { data } = await getEmpleado(id);
+    if (data && data.id) {
+      empleado.value = data;
+    } else {
+      console.error("Empleado no encontrado");
+      router.push("/inicio");
     }
+  } catch (error) {
+    console.error("Error al obtener empleado:", error);
+    router.push("/inicio");
   }
 });
 </script>

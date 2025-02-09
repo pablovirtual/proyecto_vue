@@ -1,40 +1,24 @@
 <!--
-🗑️ Componente de Eliminación de Empleados
-
-📝 Descripción:
-Este componente permite eliminar un empleado del sistema, mostrando una vista de confirmación
-con los detalles del empleado antes de proceder con la eliminación.
-
-🔧 Propiedades:
-- No recibe propiedades directamente
-
-📦 Importaciones:
-- ref, onMounted: De Vue.js para manejo de estado y ciclo de vida
-- useRoute, useRouter: De Vue Router para navegación
-- getEmpleado, deleteEmpleado: Servicios API para operaciones CRUD
-
-🔄 Estado:
-- empleado: Almacena los datos del empleado a eliminar
-
-📋 Funcionalidades:
-- Carga inicial: Obtiene los datos del empleado según el ID en la URL
-- confirmarEliminacion: Maneja el proceso de eliminación con confirmación
-
-⚡ Eventos:
-- click: En el botón de confirmación para ejecutar la eliminación
-
-🎯 Flujo de uso:
-1. Component carga y obtiene datos del empleado
-2. Muestra información del empleado
-3. Usuario confirma eliminación
-4. Sistema elimina y redirecciona a inicio
-
-⚠️ Manejo de errores:
-- Muestra alertas en caso de error en la eliminación
-- Maneja errores en la carga inicial de datos
-
-🔗 Rutas:
-- Redirección a "/Inicio" después de eliminación exitosa
+  @component Eliminar.vue
+  @description Componente para eliminar un empleado del sistema
+  
+  Este componente permite visualizar la información de un empleado específico
+  y confirmar su eliminación del sistema. Incluye:
+  - Recuperación automática de datos del empleado usando el ID de la URL
+  - Confirmación doble antes de eliminar (modal y botón)
+  - Manejo de errores y redirección
+  - Interfaz con detalles del empleado a eliminar
+  
+  @vue-data {Object} empleado - Almacena los datos del empleado a eliminar
+  
+  @vue-event confirmarEliminacion - Maneja el proceso de eliminación del empleado
+  
+  @requires vue-router
+  @requires ../services/api.js - Para las operaciones getEmpleado y deleteEmpleado
+  
+  @routing
+  - Requiere un parámetro 'id' en la query string
+  - Redirecciona a '/inicio' en caso de error o cancelación
 -->
 <script setup>
 import { ref, onMounted } from "vue";
@@ -50,21 +34,36 @@ onMounted(async () => {
   if (id) {
     try {
       const { data } = await getEmpleado(id);
-      if (data && data.length > 0) {
-        empleado.value = data[0];
+      if (Array.isArray(data)) {
+        const found = data.find(emp => emp.id == id);
+        if (found) {
+          empleado.value = found;
+        } else {
+          console.error("Empleado no encontrado");
+          router.push("/inicio");
+        }
+      } else if (data && data.id) {
+        empleado.value = data;
+      } else {
+        console.error("Empleado no encontrado");
+        router.push("/inicio");
       }
     } catch (error) {
       console.error("Error al obtener el empleado", error);
+      router.push("/inicio");
     }
+  } else {
+    console.error("ID no proporcionado");
+    router.push("/inicio");
   }
 });
 
 const confirmarEliminacion = async () => {
-  if (confirm("¿Estas seguro de eliminar este empleado?")) {
+  if (confirm("¿Estás seguro de eliminar este empleado?")) {
     try {
       await deleteEmpleado(empleado.value.id);
-      alert("Empleado eliminado existosamente");
-      router.push("/Inicio");
+      alert("Empleado eliminado exitosamente");
+      router.push("/inicio");
     } catch (error) {
       alert("Error al eliminar el empleado");
       console.error(error);
@@ -75,18 +74,18 @@ const confirmarEliminacion = async () => {
 
 <template>
   <div class="container mt-4">
-    <h1 class="mb-4">Eliminar Empleados</h1>
+    <h1 class="mb-4">Eliminar Empleado</h1>
     <div v-if="empleado" class="card">
       <div class="card-body">
-        <h5 class="card-tittle">
-          ¿Esta seguro que desea eliminar este empleado?
+        <h5 class="card-title">
+          ¿Está seguro que desea eliminar este empleado?
         </h5>
-        <p><strong>Nombre</strong>{{ empleado.nombre }}</p>
-        <p><strong>Correo</strong>{{ empleado.correo }}</p>
+        <p><strong>Nombre:</strong> {{ empleado.nombre }}</p>
+        <p><strong>Correo:</strong> {{ empleado.correo }}</p>
         <button @click="confirmarEliminacion" class="btn btn-danger me-2">
-          Confirmar Eliminacion
+          Confirmar Eliminación
         </button>
-        <router-link to="/Inicio" class="btn btn-secondary">
+        <router-link to="/inicio" class="btn btn-secondary">
           Cancelar
         </router-link>
       </div>
